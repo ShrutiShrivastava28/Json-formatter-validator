@@ -1,0 +1,44 @@
+
+  <h1 >JSON Formatter & Validator</h1>
+
+  <div class="container">
+
+    <!-- INPUT -->
+    <div class="input">
+      <div class="box-header">
+        <span>Input</span>
+
+        <div class="actions">
+          <button class="copy-btn" (click)="copyToClipboard(jsonInput)">Copy</button>
+        </div>
+      </div>
+
+      <textarea [(ngModel)]="jsonInput" placeholder="Paste your JSON here..."></textarea>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="btn">
+      <button (click)="formatJson()">Format</button>
+      <button (click)="validateJson()">Validate</button>
+      <button (click)="clearAll()">Clear</button>
+      <button (click)="downloadJson()">Download</button>
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="output">
+      <div class="box-header">
+        <span>Output</span>
+        <button class="copy-btn" (click)="copyToClipboard(formattedJson)">
+          Copy
+        </button>
+      </div>
+
+      <pre [innerHTML]="formattedJson"></pre>
+    </div>
+
+    <!-- STATUS -->
+    <div class="error" *ngIf="statusMessage">
+      {{ statusMessage }}
+    </div>
+
+  </div>

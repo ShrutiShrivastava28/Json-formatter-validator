@@ -1,0 +1,188 @@
+// --- High Fidelity Design System: Soft Professional ---
+$canvas: #f0f2f5;               // Muted, solid surface color
+$panel: #ffffff;                // Pure white for the "Elevated" container
+$accent-primary: #3b82f6;       // Modern Blue
+$accent-glow: rgba(59, 130, 246, 0.1);
+$border-light: #d1d9e6;         // Soft "Clay" border
+$text-high: #2d3436;            // Soft Onyx
+$text-low: #636e72;             // Cool Grey
+
+// --- Root Aesthetics ---
+body {
+  background-color: $canvas;
+  background-image: none;       // Removed gradients to reduce "visual noise"
+  color: $text-high;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  padding: 60px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 48px;
+  color: $text-high;
+  filter: none;
+}
+
+// --- The "Layered" Shell ---
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px;
+  background: $panel;
+  border-radius: 28px;
+  // Professional "Soft UI" shadow (Neumorphic influence but subtle)
+  border: 1px solid rgb(218, 236, 246);
+  box-shadow: 
+    8px 8px 16px rgb(218, 236, 246), 
+    -8px -8px 16px rgb(218, 236, 246); 
+}
+
+// --- High-Fidelity Header ---
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  span {
+    font-size: 14px;
+    font-weight: 700;
+    color: $text-low;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: $accent-primary;
+      border-radius: 3px; // Squared-round for a "tech" look
+    }
+  }
+}
+
+// --- Hardware-Style Editor ---
+textarea, .output pre {
+  width: 100%;
+  min-height: 320px;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f8fafd; // Tinted input to break the "too much white" feel
+  border: 2px solid $border-light;
+  border-radius: 20px;
+  color: $text-high;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  outline: none;
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: $accent-primary;
+    background: #ffffff; // Pops to white only when active
+    box-shadow: 0 0 0 5px $accent-glow;
+  }
+}
+
+// --- The "Floating" Action Bar ---
+.btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 32px 0;
+  padding: 12px;
+  background: #e4e9f2; // Darker track for buttons
+  border-radius: 24px;
+
+  button {
+    all: unset;
+    cursor: pointer;
+    flex: 1;
+    min-width: 120px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: $text-low;
+    background: #f0f2f5;
+    box-shadow: 3px 3px 6px #cbd5e0, -3px -3px 6px #ffffff;
+
+    &:first-child {
+      background: $accent-primary;
+      color: white;
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+      
+      &:hover {
+        background: #2563eb;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(59, 130, 246, 0.3);
+      }
+    }
+
+    &:hover:not(:first-child) {
+      color: $text-high;
+      background: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}
+
+// --- Premium Utilities ---
+.copy-btn {
+  all: unset;
+  cursor: pointer;
+  background: #ffffff;
+  color: $accent-primary;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  border: 1px solid $border-light;
+  box-shadow: 2px 2px 5px #d1d9e6;
+
+  &:hover {
+    background: $accent-primary;
+    color: white;
+    border-color: $accent-primary;
+  }
+}
+
+.error {
+  margin-top: 24px;
+  padding: 18px 24px;
+  background: #ffe3e3;
+  border-radius: 18px;
+  color: #d63031;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05);
+
+  &::before {
+    content: '!';
+    width: 24px;
+    height: 24px;
+    background: #d63031;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+}
